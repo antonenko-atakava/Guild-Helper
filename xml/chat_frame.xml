@@ -1,0 +1,141 @@
+<!-- Окно журнала Guild Helper -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    
+    <!-- Окно журнала - Современный дизайн -->
+    <Frame name="GuildHelperChatFrame" parent="UIParent" movable="true" enableMouse="true" hidden="true" frameStrata="DIALOG" toplevel="true">
+        <Size x="550" y="450"/>
+        <Anchors>
+            <Anchor point="CENTER">
+                <Offset x="300" y="0"/>
+            </Anchor>
+        </Anchors>
+        
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+            <Color r="0.03" g="0.05" b="0.08" a="0.98"/>
+        </Backdrop>
+        
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parent_HeaderGradient">
+                    <Size x="550" y="60"/>
+                    <Anchors>
+                        <Anchor point="TOP"/>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.1" g="0.15" b="0.3" a="1"/>
+                        <MaxColor r="0.03" g="0.05" b="0.08" a="0"/>
+                    </Gradient>
+                </Texture>
+            </Layer>
+            
+            <Layer level="ARTWORK">
+                <Texture name="$parent_Icon">
+                    <Size x="32" y="32"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="20" y="-15"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+                
+                <FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT" text="Журнал действий">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="60" y="-22"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.9" g="0.85" b="0.5" a="1"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        
+        <Frames>
+            <!-- Кнопка закрытия -->
+            <Button name="$parent_CloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset x="3" y="3"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        self:GetParent():Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
+            <Frame name="$parent_DragArea">
+                <Size x="490" y="50"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="0" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnMouseDown>
+                        if button == "LeftButton" then
+                            GuildHelperChatFrame:StartMoving()
+                        end
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        GuildHelperChatFrame:StopMovingOrSizing()
+                        SaveFramePosition(GuildHelperChatFrame, "chatPosition")
+                    </OnMouseUp>
+                </Scripts>
+            </Frame>
+            
+            <ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate">
+                <Size x="500" y="360"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset x="-10" y="-60"/>
+                    </Anchor>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="$parent_ScrollChild">
+                        <Size x="480" y="360"/>
+                        <Layers>
+                            <Layer level="ARTWORK">
+                                <FontString name="$parent_Text" font="Fonts\ARIALN.TTF" justifyH="LEFT">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT">
+                                            <Offset x="10" y="-10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="12"/>
+                                    </FontHeight>
+                                    <Color r="0.95" g="0.95" b="1" a="1"/>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </ScrollChild>
+            </ScrollFrame>
+        </Frames>
+        
+        <Scripts>
+            <OnShow>
+                LoadFramePosition(self, "chatPosition");
+                UpdateChatWindow();
+                local icon = _G["GuildHelperChatFrame_Icon"];
+                if icon then icon:SetTexture("Interface\\Icons\\INV_Misc_Book_09"); end
+            </OnShow>
+            <OnHide>
+                SaveFramePosition(self, "chatPosition");
+            </OnHide>
+        </Scripts>
+    </Frame>
+    
+</Ui>
+

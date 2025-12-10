@@ -5,6 +5,35 @@
 ## Version: 1.1.0
 ## SavedVariables: GuildHelperDB
 
-GuildHelper.xml
-GuildHelper.lua
-Minimap.lua
+## Порядок загрузки модулей
+
+# Конфигурация (загружается первой)
+config\config.lua
+
+# Библиотеки
+libs\storage.lua
+
+# Модули
+modules\scanner.lua
+modules\notifications.lua
+modules\whisper_handler.lua
+modules\chat_log.lua
+modules\minimap.lua
+
+# UI модули
+ui\formatting.lua
+ui\main_frame.lua
+ui\chat_window.lua
+
+# Обработчики событий
+events\event_handlers.lua
+
+# Команды
+core\commands.lua
+
+# Главный файл инициализации
+core\main.lua
+
+# XML интерфейсы
+xml\main_frame.xml
+xml\chat_frame.xml

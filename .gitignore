@@ -1,0 +1,17 @@
+# Cursor IDE
+.cursor/
+
+# WoW addon development
+*.bak
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+
