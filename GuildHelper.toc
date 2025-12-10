@@ -1,0 +1,10 @@
+## Interface: 30300
+## Title: Guild Helper
+## Notes: Поиск членов без заметок. Автоматические уведомления.
+## Author: CircleL
+## Version: 1.1.0
+## SavedVariables: GuildHelperDB
+
+GuildHelper.xml
+GuildHelper.lua
+Minimap.lua

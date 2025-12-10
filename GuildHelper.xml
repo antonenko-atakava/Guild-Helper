@@ -1,0 +1,796 @@
+<!-- GuildHelper.xml - Полностью переработанный современный дизайн -->
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    
+    <!-- Главное окно - Современный карточный дизайн -->
+    <Frame name="GuildHelperFrame" parent="UIParent" movable="true" enableMouse="true" hidden="true" frameStrata="DIALOG" toplevel="true">
+        <Size x="520" y="600"/>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
+        
+        <!-- Современный фон -->
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+            <Color r="0.03" g="0.05" b="0.08" a="0.98"/>
+        </Backdrop>
+        
+        <Layers>
+            <!-- BACKGROUND - Градиенты и фоны -->
+            <Layer level="BACKGROUND">
+                <!-- Градиент шапки -->
+                <Texture name="$parent_HeaderGradient">
+                    <Size x="520" y="80"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.1" g="0.15" b="0.3" a="1"/>
+                        <MaxColor r="0.03" g="0.05" b="0.08" a="0"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Карточка статистики - Фон -->
+                <Texture name="$parent_StatsCardBg">
+                    <Size x="480" y="90"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-70"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.08" g="0.12" b="0.18" a="0.95"/>
+                        <MaxColor r="0.06" g="0.1" b="0.15" a="0.95"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Карточка действий - Фон -->
+                <Texture name="$parent_ActionsCardBg">
+                    <Size x="480" y="140"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-175"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.08" g="0.12" b="0.18" a="0.95"/>
+                        <MaxColor r="0.06" g="0.1" b="0.15" a="0.95"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Карточка настроек - Фон -->
+                <Texture name="$parent_SettingsCardBg">
+                    <Size x="480" y="70"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-330"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.08" g="0.12" b="0.18" a="0.95"/>
+                        <MaxColor r="0.06" g="0.1" b="0.15" a="0.95"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Карточка результатов - Фон -->
+                <Texture name="$parent_ResultsCardBg">
+                    <Size x="480" y="165"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-415"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.08" g="0.12" b="0.18" a="0.95"/>
+                        <MaxColor r="0.06" g="0.1" b="0.15" a="0.95"/>
+                    </Gradient>
+                </Texture>
+            </Layer>
+            
+            <!-- BORDER - Рамки карточек -->
+            <Layer level="BORDER">
+                <!-- Рамка статистики -->
+                <Texture name="$parent_StatsCardBorder">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-70"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                    </Gradient>
+                </Texture>
+                <Texture name="$parent_StatsCardBorder2">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-70"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Рамка действий -->
+                <Texture name="$parent_ActionsCardBorder">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-175"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                    </Gradient>
+                </Texture>
+                <Texture name="$parent_ActionsCardBorder2">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-175"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Рамка настроек -->
+                <Texture name="$parent_SettingsCardBorder">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-330"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                    </Gradient>
+                </Texture>
+                <Texture name="$parent_SettingsCardBorder2">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-330"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0"/>
+                    </Gradient>
+                </Texture>
+                
+                <!-- Рамка результатов -->
+                <Texture name="$parent_ResultsCardBorder">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-415"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                    </Gradient>
+                </Texture>
+                <Texture name="$parent_ResultsCardBorder2">
+                    <Size x="480" y="1"/>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-415"/>
+                        </Anchor>
+                    </Anchors>
+                    <Gradient orientation="HORIZONTAL">
+                        <MinColor r="0.3" g="0.5" b="0.9" a="0.8"/>
+                        <MaxColor r="0.3" g="0.5" b="0.9" a="0"/>
+                    </Gradient>
+                </Texture>
+            </Layer>
+            
+            <!-- ARTWORK - Контент -->
+            <Layer level="ARTWORK">
+                <!-- === ШАПКА === -->
+                <Texture name="$parent_Icon">
+                    <Size x="40" y="40"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="25" y="-15"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+                
+                <FontString name="$parent_Title" inherits="GameFontNormalHuge" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="75" y="-22"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.9" g="0.85" b="0.5" a="1"/>
+                </FontString>
+                
+                <FontString name="$parent_Subtitle" inherits="GameFontNormal" justifyH="LEFT" text="Управление заметками гильдии">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT">
+                            <Offset x="0" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.6" g="0.65" b="0.75" a="1"/>
+                </FontString>
+                
+                <FontString name="$parent_Version" inherits="GameFontNormalSmall" justifyH="RIGHT">
+                    <Anchors>
+                        <Anchor point="TOPRIGHT">
+                            <Offset x="-25" y="-25"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.5" g="0.6" b="0.7" a="1"/>
+                </FontString>
+                
+                <!-- === КАРТОЧКА СТАТИСТИКИ === -->
+                <Texture name="$parent_StatsIcon">
+                    <Size x="48" y="48"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="35" y="-82"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+                
+                <FontString name="$parent_TotalMembers" inherits="GameFontNormalHuge" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="95" y="-85"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.4" g="0.9" b="0.4" a="1"/>
+                </FontString>
+                
+                <FontString name="$parent_TotalLabel" inherits="GameFontNormalSmall" justifyH="LEFT" text="Всего членов">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent_TotalMembers" relativePoint="BOTTOMLEFT">
+                            <Offset x="0" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.6" g="0.7" b="0.8" a="1"/>
+                </FontString>
+                
+                <FontString name="$parent_WithoutNotes" inherits="GameFontNormalHuge" justifyH="LEFT">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="95" y="-120"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="1" g="0.5" b="0.4" a="1"/>
+                </FontString>
+                
+                <FontString name="$parent_WithoutLabel" inherits="GameFontNormalSmall" justifyH="LEFT" text="Без заметок">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent_WithoutNotes" relativePoint="BOTTOMLEFT">
+                            <Offset x="0" y="-2"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.6" g="0.7" b="0.8" a="1"/>
+                </FontString>
+                
+                <!-- === КАРТОЧКА ДЕЙСТВИЙ === -->
+                <FontString name="$parent_ActionsLabel" inherits="GameFontHighlight" justifyH="LEFT" text="Основные действия">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="30" y="-180"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.7" g="0.85" b="1" a="1"/>
+                </FontString>
+                
+                <!-- === КАРТОЧКА НАСТРОЕК === -->
+                <Texture name="$parent_SettingsIcon">
+                    <Size x="20" y="20"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="30" y="-337"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+                
+                <FontString name="$parent_SettingsLabel" inherits="GameFontHighlight" justifyH="LEFT" text="Фильтры">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="55" y="-339"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.7" g="0.85" b="1" a="1"/>
+                </FontString>
+                
+                <!-- === КАРТОЧКА РЕЗУЛЬТАТОВ === -->
+                <Texture name="$parent_ResultsIcon">
+                    <Size x="20" y="20"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="30" y="-422"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+                
+                <FontString name="$parent_ResultsLabel" inherits="GameFontHighlight" justifyH="LEFT" text="Результаты сканирования">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="55" y="-424"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.7" g="0.85" b="1" a="1"/>
+                </FontString>
+                
+                <!-- Статус уведомлений -->
+                <FontString name="$parent_NotifyStatus" inherits="GameFontNormal" justifyH="CENTER">
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset x="0" y="-308"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="1" g="0.9" b="0.5" a="1"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        
+        <Frames>
+            <!-- === КНОПКА ЗАКРЫТИЯ === -->
+            <Button name="$parent_CloseButton" inherits="UIPanelCloseButton">
+                <Size x="40" y="40"/>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset x="-2" y="-2"/>
+                    </Anchor>
+                </Anchors>
+                <HitRectInsets>
+                    <AbsInset left="-5" right="-5" top="-5" bottom="-5"/>
+                </HitRectInsets>
+                <Scripts>
+                    <OnClick>
+                        self:GetParent():Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
+            <!-- Область перетаскивания -->
+            <Frame name="$parent_DragArea">
+                <Size x="460" y="60"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="0" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnMouseDown>
+                        if button == "LeftButton" then
+                            GuildHelperFrame:StartMoving()
+                        end
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        GuildHelperFrame:StopMovingOrSizing()
+                        SaveFramePosition(GuildHelperFrame, "framePosition")
+                    </OnMouseUp>
+                </Scripts>
+            </Frame>
+            
+            <!-- === КНОПКИ ДЕЙСТВИЙ === -->
+            <!-- Строка 1: Сканировать + В журнал -->
+            <Button name="$parent_ScanButton" inherits="UIPanelButtonTemplate" text="  Сканировать">
+                <Size x="230" y="40"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="25" y="-205"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FindMembersWithoutNotes(false, GuildHelperFrame_OnlineOnlyCheckbox:GetChecked(), GuildHelperFrame_GroupByRankCheckbox:GetChecked());
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Icons\INV_Misc_Spyglass_03">
+                    <Size x="24" y="24"/>
+                    <Anchors>
+                        <Anchor point="LEFT">
+                            <Offset x="12" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+            </Button>
+            
+            <Button name="$parent_ShowInChatButton" inherits="UIPanelButtonTemplate" text="  В журнал">
+                <Size x="230" y="40"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_ScanButton" relativePoint="TOPRIGHT">
+                        <Offset x="10" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        ClearChatMessages();
+                        FindMembersWithoutNotes(true, GuildHelperFrame_OnlineOnlyCheckbox:GetChecked(), GuildHelperFrame_GroupByRankCheckbox:GetChecked());
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Icons\INV_Misc_Note_01">
+                    <Size x="24" y="24"/>
+                    <Anchors>
+                        <Anchor point="LEFT">
+                            <Offset x="12" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+            </Button>
+            
+            <!-- Строка 2: Открыть журнал + Обновить -->
+            <Button name="$parent_OpenChatButton" inherits="UIPanelButtonTemplate" text="  Открыть журнал">
+                <Size x="230" y="36"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_ScanButton" relativePoint="BOTTOMLEFT">
+                        <Offset x="0" y="-8"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        OpenChatWindow();
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Icons\INV_Misc_Book_09">
+                    <Size x="22" y="22"/>
+                    <Anchors>
+                        <Anchor point="LEFT">
+                            <Offset x="12" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+            </Button>
+            
+            <Button name="$parent_RefreshButton" inherits="UIPanelButtonTemplate" text="  Обновить">
+                <Size x="230" y="36"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_OpenChatButton" relativePoint="TOPRIGHT">
+                        <Offset x="10" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GuildRoster();
+                        print("|cFF00FF00[GuildHelper]|r Данные гильдии обновлены!");
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Icons\Spell_ChargePositive">
+                    <Size x="22" y="22"/>
+                    <Anchors>
+                        <Anchor point="LEFT">
+                            <Offset x="12" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+            </Button>
+            
+            <!-- Кнопка уведомлений (на всю ширину) -->
+            <Button name="$parent_NotifyButton" inherits="UIPanelButtonTemplate" text="  Отправить уведомления">
+                <Size x="470" y="38"/>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_OpenChatButton" relativePoint="BOTTOM">
+                        <Offset x="115" y="-8"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        SendNotificationsToMembers();
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Icons\INV_Letter_15">
+                    <Size x="24" y="24"/>
+                    <Anchors>
+                        <Anchor point="LEFT">
+                            <Offset x="15" y="0"/>
+                        </Anchor>
+                    </Anchors>
+                </NormalTexture>
+            </Button>
+            
+            <!-- === ЧЕКБОКСЫ НАСТРОЕК === -->
+            <CheckButton name="$parent_OnlineOnlyCheckbox" inherits="UICheckButtonTemplate">
+                <Size x="24" y="24"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="35" y="-360"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GuildHelperDB.onlineOnly = self:GetChecked();
+                    </OnClick>
+                </Scripts>
+            </CheckButton>
+            
+            <CheckButton name="$parent_GroupByRankCheckbox" inherits="UICheckButtonTemplate">
+                <Size x="24" y="24"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_OnlineOnlyCheckbox" relativePoint="TOPRIGHT">
+                        <Offset x="175" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GuildHelperDB.groupByRank = self:GetChecked();
+                    </OnClick>
+                </Scripts>
+            </CheckButton>
+            
+            <!-- === ПРОГРЕСС-БАР === -->
+            <Frame name="$parent_ProgressBarBg">
+                <Size x="440" y="18"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset x="0" y="-568"/>
+                    </Anchor>
+                </Anchors>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="8"/>
+                    </EdgeSize>
+                    <BackgroundInsets>
+                        <AbsInset left="2" right="2" top="2" bottom="2"/>
+                    </BackgroundInsets>
+                    <Color r="0" g="0" b="0" a="0.7"/>
+                </Backdrop>
+            </Frame>
+            
+            <StatusBar name="$parent_ProgressBar" minValue="0" maxValue="100" defaultValue="0">
+                <Size x="432" y="12"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset x="0" y="-571"/>
+                    </Anchor>
+                </Anchors>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+                <BarColor r="0.2" g="0.6" b="1" a="0.9"/>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <FontString name="$parent_Text" inherits="GameFontNormalSmall">
+                            <Anchors>
+                                <Anchor point="CENTER"/>
+                            </Anchors>
+                            <Color r="1" g="1" b="1" a="1"/>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </StatusBar>
+            
+            <!-- === РЕЗУЛЬТАТЫ === -->
+            <Frame name="$parent_ResultsBg">
+                <Size x="460" y="115"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset x="0" y="-450"/>
+                    </Anchor>
+                </Anchors>
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="12"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="3" right="3" top="3" bottom="3"/>
+                    </BackgroundInsets>
+                    <Color r="0.02" g="0.04" b="0.08" a="0.9"/>
+                </Backdrop>
+            </Frame>
+            
+            <ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate">
+                <Size x="430" y="105"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset x="-10" y="-455"/>
+                    </Anchor>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="$parent_ScrollChild">
+                        <Size x="410" y="105"/>
+                        <Layers>
+                            <Layer level="ARTWORK">
+                                <FontString name="$parent_Text" font="Fonts\ARIALN.TTF" justifyH="LEFT">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT">
+                                            <Offset x="8" y="-8"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="12"/>
+                                    </FontHeight>
+                                    <Color r="0.95" g="0.95" b="1" a="1"/>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </ScrollChild>
+            </ScrollFrame>
+            
+            <!-- === КНОПКА ОЧИСТКИ === -->
+            <Button name="$parent_ClearButton" inherits="UIPanelButtonTemplate" text="Очистить">
+                <Size x="120" y="26"/>
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset x="-30" y="-422"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        ClearResults();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+        
+        <Scripts>
+            <OnLoad>
+                GuildHelper_OnLoad(self);
+            </OnLoad>
+            <OnShow>
+                LoadFramePosition(self, "framePosition");
+            </OnShow>
+            <OnHide>
+                SaveFramePosition(self, "framePosition");
+            </OnHide>
+        </Scripts>
+    </Frame>
+    
+    <!-- Окно журнала - Современный дизайн -->
+    <Frame name="GuildHelperChatFrame" parent="UIParent" movable="true" enableMouse="true" hidden="true" frameStrata="DIALOG" toplevel="true">
+        <Size x="550" y="450"/>
+        <Anchors>
+            <Anchor point="CENTER">
+                <Offset x="300" y="0"/>
+            </Anchor>
+        </Anchors>
+        
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="32"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="32"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11"/>
+            </BackgroundInsets>
+            <Color r="0.03" g="0.05" b="0.08" a="0.98"/>
+        </Backdrop>
+        
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parent_HeaderGradient">
+                    <Size x="550" y="60"/>
+                    <Anchors>
+                        <Anchor point="TOP"/>
+                    </Anchors>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor r="0.1" g="0.15" b="0.3" a="1"/>
+                        <MaxColor r="0.03" g="0.05" b="0.08" a="0"/>
+                    </Gradient>
+                </Texture>
+            </Layer>
+            
+            <Layer level="ARTWORK">
+                <Texture name="$parent_Icon">
+                    <Size x="32" y="32"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="20" y="-15"/>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.08" right="0.92" top="0.08" bottom="0.92"/>
+                </Texture>
+                
+                <FontString name="$parent_Title" inherits="GameFontNormalLarge" justifyH="LEFT" text="Журнал действий">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset x="60" y="-22"/>
+                        </Anchor>
+                    </Anchors>
+                    <Color r="0.9" g="0.85" b="0.5" a="1"/>
+                </FontString>
+            </Layer>
+        </Layers>
+        
+        <Frames>
+            <!-- Кнопка закрытия (объявляем первой, чтобы была ниже) -->
+            <Button name="$parent_CloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset x="3" y="3"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        self:GetParent():Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
+            <Frame name="$parent_DragArea">
+                <Size x="490" y="50"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset x="0" y="0"/>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnMouseDown>
+                        if button == "LeftButton" then
+                            GuildHelperChatFrame:StartMoving()
+                        end
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        GuildHelperChatFrame:StopMovingOrSizing()
+                        SaveFramePosition(GuildHelperChatFrame, "chatPosition")
+                    </OnMouseUp>
+                </Scripts>
+            </Frame>
+            
+            <ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate">
+                <Size x="500" y="360"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset x="-10" y="-60"/>
+                    </Anchor>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="$parent_ScrollChild">
+                        <Size x="480" y="360"/>
+                        <Layers>
+                            <Layer level="ARTWORK">
+                                <FontString name="$parent_Text" font="Fonts\ARIALN.TTF" justifyH="LEFT">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT">
+                                            <Offset x="10" y="-10"/>
+                                        </Anchor>
+                                    </Anchors>
+                                    <FontHeight>
+                                        <AbsValue val="12"/>
+                                    </FontHeight>
+                                    <Color r="0.95" g="0.95" b="1" a="1"/>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+                </ScrollChild>
+            </ScrollFrame>
+        </Frames>
+        
+        <Scripts>
+            <OnShow>
+                LoadFramePosition(self, "chatPosition");
+                UpdateChatWindow();
+                local icon = _G["GuildHelperChatFrame_Icon"];
+                if icon then icon:SetTexture("Interface\\Icons\\INV_Misc_Book_09"); end
+            </OnShow>
+            <OnHide>
+                SaveFramePosition(self, "chatPosition");
+            </OnHide>
+        </Scripts>
+    </Frame>
+    
+</Ui>
